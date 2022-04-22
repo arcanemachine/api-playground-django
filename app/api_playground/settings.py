@@ -6,6 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8010']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -69,13 +70,22 @@ USE_I18N = True
 USE_TZ = True
 
 # static
-STATIC_URL = 'static/'
+STATIC_URL = '/staticfiles/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # misc
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # THIRD-PARTY APPS #
+
+# django-cors-headers / corsheaders
+CORS_ALLOW_HEADERS =\
+    ['hx-current-url', 'hx-request', 'hx-target', 'hx-trigger', 'x-csrftoken']
+# CORS_ALLOWED_ORIGINS = ['http://localhost:8010']
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_CREDENTIALS = True
 
 # djangorestframework / rest_framework
 REST_FRAMEWORK = {

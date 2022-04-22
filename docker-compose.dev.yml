@@ -1,0 +1,14 @@
+---
+version: "3.8"
+
+services:
+  nginx:
+    image: docker.io/nginx
+    depends_on:
+      - django
+    volumes:
+      - ./volumes/nginx/conf.d/dev:/etc/nginx/conf.d
+    networks:
+      - whiteboard
+    ports:
+      - "${PROJECT_PORT_EXTERNAL}:80"

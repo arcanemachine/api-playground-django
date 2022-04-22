@@ -11,4 +11,4 @@ if [ -f ".env.override" ]; then
   set -o allexport; source .env.override; set +o allexport
 fi
 
-python3 manage.py runserver
+python3 manage.py runserver 0.0.0.0:8010
