@@ -7,7 +7,6 @@ services:
     environment:
       PROJECT_NAME_PYTHON: "${PROJECT_NAME_PYTHON:?}"
       PROJECT_PORT_INTERNAL: "${PROJECT_PORT_INTERNAL:?}"
-      SERVER_ENVIRONMENT: "${SERVER_ENVIRONMENT:?}"
 
       SECRET_KEY: "${SECRET_KEY:?}"
     networks:

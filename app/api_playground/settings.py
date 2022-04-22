@@ -3,10 +3,13 @@ import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8010']
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'your-secret-key')
+if SECRET_KEY == 'your-secret-key':
+    print("""Using the default SECRET_KEY...""")
 
 INSTALLED_APPS = [
     'django.contrib.admin',

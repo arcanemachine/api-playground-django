@@ -1,29 +1,12 @@
-# RateThisPad
+# api-playground (server)
 
-*WARNING* Instructions are out of date! Use podman!
+A basic Django API server intended to provide a simple API for a client to consume. Mostly intended for personal purposes.
 
-## Setup Instructions
 
-- Purge and minify CSS
-  - npm i -g purgecss minify
-  - ./scripts/css-purge-and-minify.sh
+# Setup
 
-- To get local scripts (runserver.sh, etc) working, add environment variables for virtualenv:
-  - Copy the template in ./scripts/venv-scripts/postactivate.default to postactivate and assign any desired environment variables there
-  - Symlink your postactivate script to /[venv-dir]/bin/postactivate
+All instructions assume you are in the project root folder (the folder containing this file).
 
-- Create a new virtualenv
-  - If virtualenvwrapper not installed, install it now
-  - mkvirtualenv your-venv
-
-- Install packages
-  - dev
-    - poetry install
-  - production
-    - poetry install --no-dev
-
-- Run the migrations
-  - python3 manage.py migrate
-
-- Consolidate static files
-  - python3 manage.py collectstatic
+- Ensure that docker and docker-compose are installed.
+- Optional: Copy `.env.override.example` to `.env.override`. In the newly-copied file, change the value of `SECRET_KEY` to a random value.
+- Run: `docker-compose -f docker-compose.yml -f docker-compose.dev.yml up`

@@ -2,6 +2,9 @@
 version: "3.8"
 
 services:
+  django:
+    environment:
+      SERVER_ENVIRONMENT: dev
   nginx:
     image: docker.io/nginx
     depends_on:
