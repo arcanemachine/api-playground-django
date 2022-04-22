@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd $(dirname "$0")
+
+# prevent garbled text in terminal
+stty sane
+
+# import environment
+if [ -f ".env.override" ]; then
+  echo "Importing environment from '.env.override'..."
+  set -o allexport; source .env.override; set +o allexport
+fi
+
+python3 manage.py runserver
