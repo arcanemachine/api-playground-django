@@ -1,10 +1,12 @@
+from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from rest_framework import viewsets, permissions
-# from rest_framework.decorators import action
 
+from . import serializers
 from .models import Thing
-from .permissions import HasThingPermissions
-from .serializers import ThingSerializer
+from .permissions import HasThingPermissions, HasUserPermissions
+
+UserModel = get_user_model()
 
 
 def api_root(request):
@@ -16,7 +18,7 @@ class ThingViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to view and edit their things
     """
     queryset = Thing.objects.all()
-    serializer_class = ThingSerializer
+    serializer_class = serializers.ThingSerializer
     permission_classes = [permissions.IsAuthenticated, HasThingPermissions]
 
     def filter_queryset(self, queryset):
@@ -25,3 +27,12 @@ class ThingViewSet(viewsets.ModelViewSet):
         else:
             queryset = queryset.filter(user=self.request.user)
         return queryset
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to view and edit their things
+    """
+    queryset = UserModel.objects.all()
+    serializer_class = serializers.UserSerializer
+    permission_classes = [permissions.IsAuthenticated, HasUserPermissions]

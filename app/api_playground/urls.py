@@ -12,6 +12,7 @@ urlpatterns = [
 
     # apps
     path('api/', include('api.urls')),
-    path('api/auth/',
+    path('api/auth/', include('dj_rest_auth.urls')),
+    path('api/auth/native/',
          include('rest_framework.urls', namespace='rest_framework')),
 ]

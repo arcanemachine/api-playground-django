@@ -9,6 +9,7 @@ app_name = 'api'
 # routers
 router = routers.DefaultRouter()
 router.register(r'things', views.ThingViewSet, basename='thing')
+router.register(r'users', views.UserViewSet, basename='user')
 
 
 # urls

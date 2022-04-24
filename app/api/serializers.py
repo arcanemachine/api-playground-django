@@ -1,6 +1,9 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from .models import Thing
+
+UserModel = get_user_model()
 
 
 class ThingSerializer(serializers.HyperlinkedModelSerializer):
@@ -12,3 +15,9 @@ class ThingSerializer(serializers.HyperlinkedModelSerializer):
         user = self.context['request'].user
         thing = Thing.objects.create(user=user, **validated_data)
         return thing
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = ['id', 'username', 'email']

@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     # third-party
     'corsheaders',
+    'dj_rest_auth',
     'rest_framework',
     'rest_framework.authtoken',
 ]
