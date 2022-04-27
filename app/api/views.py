@@ -21,6 +21,7 @@ class ThingViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ThingSerializer
     permission_classes = [permissions.IsAuthenticated, HasThingPermissions]
 
+    # show all Things if ?all=1
     def filter_queryset(self, queryset):
         if self.request.GET.get('all') == '1' and self.request.user.is_staff:
             queryset = Thing.objects.all()
