@@ -24,7 +24,9 @@ class ThingSerializer(serializers.HyperlinkedModelSerializer):
         user_things = Thing.objects.filter(user=user)
 
         # do not allow a user to have duplicate thing names
-        if user_things.filter(name=data['name']).first() != obj:
+        objects_with_same_name = user_things.filter(name=data['name'])
+        if objects_with_same_name.exists()\
+                and objects_with_same_name.first() != obj:
             raise serializers.ValidationError(
                 {'name': "You already have a Thing with this name."},
                 code="thing_name_duplicate")
