@@ -7,5 +7,8 @@ class Thing(models.Model):
         models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=32)
 
+    class Meta:
+        ordering = ['-id']
+
     def __str__(self):
         return self.name
