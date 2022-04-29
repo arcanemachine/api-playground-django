@@ -19,11 +19,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # local
+    'django.contrib.sites',
     'api.apps.ApiConfig',
     'users.apps.UsersConfig',
     # third-party
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'corsheaders',
     'dj_rest_auth',
+    'dj_rest_auth.registration',
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -83,6 +88,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # THIRD-PARTY APPS #
+
+# django-allauth
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+# dj-rest-auth
+SITE_ID = 1
 
 # django-cors-headers / corsheaders
 CORS_ALLOW_HEADERS =\
